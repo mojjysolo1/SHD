@@ -1,16 +1,23 @@
-import { View, Text,StatusBar,StyleSheet,Pressable } from 'react-native'
+import { View, 
+  Text,
+  StyleSheet,
+  Pressable,
+} from 'react-native'
 import React from 'react'
 
 
-const Header = () => {
+const Header = ({propAddRole}) => {
+
+ 
   return (
     <>
         <View style={styles.container}>
             <Pressable 
-           style={styles.bar_btn}
+            style={styles.bar_btn}
             android_ripple={{ color:'#dddddd' }}
+            onPress={propAddRole}
             >
-              <Text style={styles.bar_text}  >Add Staf</Text>
+              <Text style={styles.bar_text}>Add Staff</Text>
             </Pressable>
         </View>
       
@@ -41,7 +48,7 @@ const styles=StyleSheet.create({
       fontWeight: 'bold',
       letterSpacing: 0.25,
       color: 'white',
-    }
+    },
 
   });
 export default Header

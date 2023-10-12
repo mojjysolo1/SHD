@@ -2,9 +2,7 @@ import { View, Text,FlatList,SectionList } from 'react-native'
 import React from 'react'
 import NodeList from './NodeList'
 
-const Tree = ({data}) => {
-
-  
+const Tree = ({data,deleteItem,updateItem}) => {
 
   return (
     <View>
@@ -12,7 +10,7 @@ const Tree = ({data}) => {
          data={data}
          renderItem={({item})=>(
 
-             <NodeList node={item}/>
+             <NodeList node={item} deleteItem={deleteItem} updateItem={updateItem}/>
          )}
 
          keyExtractor={(item,index) => {
