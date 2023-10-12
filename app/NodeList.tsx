@@ -19,9 +19,10 @@ const NodeList = ({node,deleteItem,updateItem}) => {
 
     // updateItem
 
-    const update=()=>{
-        setvisibleDialog(true);
-    }
+    // const updateDialog=()=>{
+    //     alert('hi');
+    //     setvisibleDialog(false);
+    // }
 
   return (
     <>
@@ -34,12 +35,22 @@ const NodeList = ({node,deleteItem,updateItem}) => {
                 <View style={styles.listItemView}>
 
                     <FontAwesome5 size={15} style={{marginTop:5,width:20}} name={dropDownIndicator()}/>
-                    <Text style={styles.listItemText}>
-                        {hasChild?node.role:node.name}
-                    </Text>
+                    <View style={styles.listItemText}>
+                        <Text >
+                            {hasChild?node.role:node.name}
+                        </Text>
+                        <Text>
+                         {hasChild?'':'reports_to: '+node.reports_to??'N/A'}
+                        </Text>
+                    </View>
+                    
+                    {/* {"\n"}
+                       
+                    
+                    
 
                     {/* edit/update icon*/}
-                    <FontAwesome5 size={18} color='black' style={{ backgroundColor:'#f3b481',marginRight:25}} onPress={()=>setvisibleDialog(true)}  name='edit'/> 
+                    <FontAwesome5 size={18} color='black' style={{marginRight:25}} onPress={()=>setvisibleDialog(true)}  name='edit'/> 
 
                     {/* delete icon*/}
                     <FontAwesome5 size={15} color='red' style={{ backgroundColor:'#f3b481',padding:5,borderRadius:12}} onPress={()=>deleteItem(node.key)}  name='minus'/>  
@@ -54,7 +65,10 @@ const NodeList = ({node,deleteItem,updateItem}) => {
                     value={updateInput}
                     onChangeText={(text : string) =>setUpdateInput(text)}
                     ></Dialog.Input>
-                    <Dialog.Button label="Submit" onPress={()=>update} />
+                    <Dialog.Button label="Submit" onPress={()=>{
+                        updateItem(node.key,{role:updateInput,name:updateInput})
+                        setvisibleDialog(false);
+                    }} />
                 </Dialog.Container>
             </View>
         </View>
@@ -62,7 +76,7 @@ const NodeList = ({node,deleteItem,updateItem}) => {
         }
 
          {hasChild && visible && (<View style={{ padding:1,marginLeft:20 }}>
-                <Tree data={node.employees} deleteItem={deleteItem} />
+                <Tree data={node.employees} deleteItem={deleteItem} updateItem={updateItem} />
             </View>)
           }
 

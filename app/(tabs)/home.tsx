@@ -139,8 +139,9 @@ const home = () => {
   }
 
   const updateItem=(key,obj)=>{
+       
 
-      listData.map(item=>{
+      let newlist=listData.map(item=>{
             if(item.key===key){
                 return {...item,role:obj.role}
             }else{
@@ -159,6 +160,8 @@ const home = () => {
               return {...clean_item,employees:emp_obj};
             }
       })
+
+      setListData(newlist);
   }
 
   return (
