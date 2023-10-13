@@ -115,32 +115,32 @@ const home = () => {
   }
 
   const deleteItem=(key_id,new_list=[])=>{
-
+  
     let map_list=listData.map(item=>{
-      
+                      if(item=='undefined' || !item) return false;
          if(item.key!=key_id){
              let obj1={key:item.key,role:item.role,icon:item.icon,employees:[]};
               let emp_array=Array.from(item.employees);
 
               for(i in emp_array){
-
+                if(emp_array[i]=='undefined' || !emp_array[i]) continue;
                 if(emp_array[i].key!=key_id){
                   obj1.employees=[emp_array[i],...obj1.employees];
-                  }
+                }
+
               }
                     
             return obj1;
+         }else{
+                 return '';
          }
-        return false;
+       
     });
      setListData(map_list);
-
-
   }
 
   const updateItem=(key,obj)=>{
-       
-
+      
       let newlist=listData.map(item=>{
             if(item.key===key){
                 return {...item,role:obj.role}

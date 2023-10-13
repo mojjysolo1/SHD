@@ -39,9 +39,9 @@ const NodeList = ({node,deleteItem,updateItem}) => {
                         <Text >
                             {hasChild?node.role:node.name}
                         </Text>
-                        <Text>
+                        {/* <Text>
                          {hasChild?'':'reports_to: '+node.reports_to??'N/A'}
-                        </Text>
+                        </Text> */}
                     </View>
                     
                     {/* {"\n"}
